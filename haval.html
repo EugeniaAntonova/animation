@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: 100%;
+    }
+    body {
+        background-color: #ffcc00;
+    }
+    .slider {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1110px;
+        height: 400px;
+
+        position: relative;
+    }
+
+    .star, .car-container {
+        position: absolute;
+    }
+
+    .car-container {
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        height: min-content;
+        transform: translate(1000px, -167px);
+        animation: drive 1.5s ease-out 1 forwards;
+    }
+    
+    
+    .car {
+        position: relative;
+        z-index: 2;
+    }
+
+    .star {
+        transform: scale(0);
+        filter: blur(8px);
+        animation: blink 1s linear 2s 1 forwards;
+    }
+
+    .star.back {
+        top: 25%;
+        left: -4%;
+    }
+
+    .star.front {
+        top: 27%;
+        left: 22%;
+        z-index: 3;
+    }
+
+    @keyframes blink {
+        0%, 75% {
+            transform: scale(0);
+            animation-timing-function: ease-out;
+        } 
+        
+        50%, 100% {
+            transform: scale(1);
+            animation-timing-function: ease-in;
+        }
+    }
+
+    @keyframes drive {
+        100% {
+            transform: translate(0, 0);
+        }        
+    }
+</style>
+<body>
+    <section class="slider">
+        <div class="car-container">
+            <img src="/Star.svg" width="80" class="star back" aria-hidden="true">
+            <img src="/Star.svg" width="100" class="star front" aria-hidden="true">
+            <img src="/car.png" width="500" class="car" aria-hidden="true">
+        </div>
+    </section>
+</body>
+</html>
