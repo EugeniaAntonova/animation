@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,8 @@
     * {
         box-sizing: border-box;
     }
-
-    img {
-        max-width: 100%;
+    body {
+        margin: 0;
     }
 
     .section {
@@ -22,55 +22,86 @@
         width: 100%;
         margin: 0 auto;
         max-width: 1110px;
-        height: 400px;
+        height: 360px;
 
         position: relative;
-        background-image: url('./bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('./slider-mob.jpg');
     }
 
-    .star, .car-container {
+    .star,
+    .car-container {
         position: absolute;
     }
 
     .car-container {
-        right: -130px;
-        bottom: -135px;
+        bottom: -52px;
+        right: -272px;
         height: min-content;
         transform: translate(1000px, -167px);
         animation: drive 1.5s ease-out 1 forwards;
     }
-    
-    
+
+
     .car {
+        width: 602px;
         position: relative;
         z-index: 2;
     }
 
     .star {
+        z-index: 3;
         transform: scale(0);
         filter: blur(8px);
         animation: blink 1s linear 2s 1 forwards;
     }
 
     .star.back {
-        top: 18%;
-        left: 24%;
-        z-index: 3;
+        top: 15%;
+        left: 22%;
     }
 
     .star.front {
-        top: 17%;
-        left: 38%;
-        z-index: 3;
+        top: 12%;
+        left: 36%;
+    }
+
+    @media (min-width: 1024px) {
+        .slider {
+            height: 400px;
+            background-image: url('./bg.png');
+        }
+
+        .car-container {
+            right: -130px;
+            bottom: -135px;
+        }
+
+        .star.back {
+            top: 18%;
+            left: 24%;
+            z-index: 3;
+        }
+
+        .star.front {
+            top: 17%;
+            left: 38%;
+            z-index: 3;
+        }
+
     }
 
     @keyframes blink {
-        0%, 75% {
+
+        0%,
+        75% {
             transform: scale(0);
             animation-timing-function: ease-out;
-        } 
-        
-        50%, 100% {
+        }
+
+        50%,
+        100% {
             transform: scale(1);
             animation-timing-function: ease-in;
         }
@@ -79,9 +110,10 @@
     @keyframes drive {
         100% {
             transform: translate(0, 0);
-        }        
+        }
     }
 </style>
+
 <body>
     <section class="section">
         <div class="slider">
@@ -93,4 +125,5 @@
         </div>
     </section>
 </body>
+
 </html>
