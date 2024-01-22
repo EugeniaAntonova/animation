@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .timer-section {
+            background-color: #ffcc00;
+            padding: 10px;
+            width: fit-content;
+        }
+
+        .timer-title,
+        .time {
+            display: block;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+
+        }
+
+        .timer-title {
+            margin-bottom: 6px;
+            font-size: 10px;
+            line-height: 120%;
+        }
+
+        .timer-output {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            place-items: center;
+            gap: 8px;
+        }
+
+        .timer-inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 120%;
+        }
+
+        .timer-label {
+            color: #000;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .time {
+            align-self: stretch;
+            width: 30px;
+            padding: 2px 4px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 800;
+            background-color: #fff;
+            border-radius: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timer-section">
+        <p class="timer-title">До завершения регистрации:</p>
+        <p class="timer-output">
+            <span class="timer-inner">
+                <span class="time days">0</span>
+                <span class="timer-label">дн</span>
+            </span>
+            <span class="timer-inner">
+                <span class="time hours">0</span>
+                <span class="timer-label">ч</span>
+            </span>
+            <span class="timer-inner">
+                <span class="time minutes">0</span>
+                <span class="timer-label">мин</span>
+            </span>
+            <span class="timer-inner">
+                <span class="time seconds">0</span>
+                <span class="timer-label">сек</span>
+            </span>
+        </p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // конечная дата
+            const deadline = new Date('2024-01-31 00:00');
+            // id таймера
+            let timerId = null;
+            // склонение числительных
+            // function declensionNum(num, words) {
+            // return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+            // }
+            // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+            function countdownTimer() {
+                const diff = deadline - new Date();
+                if (diff <= 0) {
+                    clearInterval(timerId);
+                }
+                const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+                const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+                const minutes = diff > 0 ? Math.round(diff / 1000 / 60) % 60 : 0;
+                // const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+                $days.textContent = days < 10 ? '0' + days : days;
+                $hours.textContent = hours < 10 ? '0' + hours : hours;
+                $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+                // $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+                // $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
+                // $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
+                // $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
+                // $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+            }
+            // получаем элементы, содержащие компоненты даты
+            const $days = document.querySelector('.days');
+            const $hours = document.querySelector('.hours');
+            const $minutes = document.querySelector('.minutes');
+            // const $seconds = document.querySelector('.seconds');
+            // вызываем функцию countdownTimer
+            countdownTimer();
+            // вызываем функцию countdownTimer каждую секунду
+            timerId = setInterval(countdownTimer, 1000);
+        });
+    </script>
+</body>
+
+</html>

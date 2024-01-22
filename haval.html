@@ -10,6 +10,7 @@
     * {
         box-sizing: border-box;
     }
+
     body {
         margin: 0;
         overflow-x: hidden;
@@ -29,7 +30,7 @@
         position: relative;
         background-repeat: no-repeat;
         background-size: cover;
-        background-image: url('./slider-mob.jpg');
+        background-image: url('./649-slider-mob.png');
     }
 
     .star,
@@ -38,16 +39,16 @@
     }
 
     .car-container {
-        bottom: -52px;
-        right: -272px;
+        bottom: 50px;
+        right: -145px;
         height: min-content;
-        transform: translate(1000px, -167px);
+        transform: translate(1000px, -235px);
         animation: drive 1.5s ease-out 1 forwards;
     }
 
 
     .car {
-        width: 602px;
+        width: 415px;
         position: relative;
         z-index: 2;
     }
@@ -60,38 +61,46 @@
     }
 
     .star.back {
-        top: 15%;
-        left: 22%;
+        top: 23%;
+        left: 12%;
     }
 
     .star.front {
-        top: 12%;
-        left: 36%;
+        top: 22%;
+        left: 34%;
     }
 
     @media (min-width: 1024px) {
+
         .slider {
             height: 400px;
-            background-image: url('./bg.png');
+            background-image: url('./649-slider-desk-ru.png');
+        }
+
+        .slider-logo {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            z-index: 4;
         }
 
         .car-container {
-            right: -125px;
-            bottom: -185px;
+            right: -50px;
+            bottom: -15px;
         }
 
         .car {
-            width: 985px;
+            width: 801px;
         }
 
         .star.back {
-            top: 19%;
-            left: 25%;
+            top: 35%;
+            left: 17%;
             z-index: 3;
         }
 
         .star.front {
-            top: 18%;
+            top: 34%;
             left: 40%;
             z-index: 3;
         }
@@ -123,10 +132,14 @@
 <body>
     <section class="section">
         <div class="slider">
+            <picture>
+                <source media="(min-width: 1024px)" width="139" srcset="/logo.png">
+                <img class="slider-logo" src="/logo.png" width="0" alt="6/49 loto logo">
+            </picture>
             <div class="car-container">
                 <img src="./Star.svg" width="80" class="star back" aria-hidden="true">
                 <img src="./Star.svg" width="100" class="star front" aria-hidden="true">
-                <img src="./car.png" width="850" style="transform: rotateY(-180deg);" class="car" aria-hidden="true">
+                <img src="./car.png" width="801" class="car" aria-hidden="true">
             </div>
         </div>
     </section>
