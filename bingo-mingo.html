@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    div.table-cell {
+        width: 160px;
+        height: 145px;
+        margin: 0 auto;
+    }
+
+    .bm-card-popular {
+        width: 100%;
+        min-height: 100%;
+        position: relative;
+        background: url('/bingo-mingo-bg.png') center / cover #C90012;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .bm-logo-popular {
+        position: absolute;
+        bottom: 8%;
+        left: 6%;
+    }
+
+    .bm-logo-popular-wrapper.move::before {
+        animation: blink 1s ease-in-out 2 alternate;
+    }
+
+    .bm-wheel-popular {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: -54%;
+    }
+
+    .bm-wheel-popular.move {
+        animation: wheel-turn 5s ease-in-out 1 forwards;
+    }
+
+    @media (min-width: 1024px) {
+        div.table-cell {
+            width: 210px;
+            height: 190px;
+        }
+    }
+
+    @keyframes wheel-turn {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        75% {
+            transform: rotate(-1120deg);
+            animation-timing-function: cubic-bezier(.54, -0.02, .67, .72);
+        }
+
+        92% {
+            transform: rotate(-1070deg);
+            animation-timing-function: ease-in
+        }
+
+        100% {
+            transform: rotate(-1080deg);
+            animation-timing-function: cubic-bezier(.54, -0.02, .67, .72);
+        }
+    }
+</style>
+
+<body>
+    <div class="table-cell">
+        <div class="bm-card-popular">
+            <picture>
+                <source media="(min-width: 1024px)" srcset="/bingo-mingo-wheel.png" width="207" aria-hidden="true">
+                <img src="/bingo-mingo-wheel.png" width="157" aria-hidden="true" class="bm-wheel-popular">
+            </picture>
+            <picture>
+                <source media="(min-width: 1024px)" srcset="/bingo-mingo-logo.png" width="65" aria-hidden="true">
+                <img src="/bingo-mingo-logo.png" width="50" aria-hidden="true" class="bm-logo-popular">
+            </picture>
+        </div>
+
+    </div>
+    <script>
+        const turningWheel = (n) => {
+            const wheel = document.querySelector('.bm-wheel-popular');
+            const spark = document.querySelector('.bm-logo-popular-wrapper');
+            setInterval(() => {
+                wheel.classList.add('move')
+            }, n)
+            setInterval(() => {
+                spark.classList.add('move')
+            }, n / 2)
+        }
+
+        turningWheel(15000)
+    </script>
+</body>
+
+</html>

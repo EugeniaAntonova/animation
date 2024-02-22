@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div.table-cell {
+            width: 330px;
+            height: 145px;
+            margin: 0 auto;
+        }
+
+        .card-649-popular {
+            width: 100%;
+            min-height: 100%;
+            position: relative;
+            background: url('/649-popular-bg.png') center / cover #FFAF01;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .card-649-popular-title {
+            font-size: 15px;
+            font-family: "Inter", sans-serif;
+            font-weight: 900;
+            position: absolute;
+            z-index: 3;
+            margin: 0 0 5px;
+            top: 15px;
+            left: 15px;
+        }
+
+        .logo-649-popular {
+            position: absolute;
+            bottom: 8%;
+            left: 3%;
+        }
+
+        .car-649-popular {
+            position: absolute;
+            z-index: 2;
+            top: -9%;
+            right: -36%;
+        }
+
+        .stars,
+        .star,
+        .blink-649-popular {
+            position: absolute;
+        }
+
+        .blink-649-popular.back {
+            z-index: 3;
+            top: 37%;
+            right: 33%;
+        }
+
+        .blink-649-popular.front {
+            z-index: 3;
+            top: 28%;
+            right: 2%;
+        }
+
+        .blink-649-popular {
+            transform: scale(0);
+        }
+
+        .blink-649-popular.move {
+            animation: blink 4s ease-in 1;
+        }
+
+        .stars {
+            top: 20%;
+            right: 46%;
+        }
+
+        .star {
+            transform: scale(.4);
+            animation: ripple 4.2s ease-out infinite;
+        }
+
+        .star:nth-child(2) {
+            animation-delay: .7s;
+        }
+
+        .star:nth-child(3) {
+            animation-delay: 1.4s;
+        }
+
+        .star:nth-child(4) {
+            animation-delay: 2.1s;
+        }
+
+        .star:nth-child(5) {
+            animation-delay: 2.8s;
+        }
+
+        .star:nth-child(6) {
+            animation-delay: 3.5s;
+        }
+
+        .timer-649-popular {
+            z-index: 3;
+            top: 39px;
+            left: 15px;
+        }
+
+        .timer-649-popular-title {
+            color: #000;
+            line-height: 100%;
+            font-size: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timer-649-popular-body {
+            width: fit-content;
+            display: grid;
+            grid-template-columns: repeat(3, 29px);
+            gap: 6px;
+        }
+
+        .timer-649-popular-unit {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timer-649-popular-time-wrapper {
+            background-color: #fff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 10px;
+            line-height: 100%;
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .timer-649-popular-time-label {
+            font-size: 8px;
+            line-height: 120%;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (min-width: 1024px) {
+            div.table-cell {
+                width: 435px;
+                height: 190px;
+            }
+
+            .card-649-popular-title {
+                font-size: 20px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .car-649-popular {
+                top: -9%;
+                right: -36%;
+            }
+
+            .blink-649-popular.back {
+                top: 42%;
+                right: 36%;
+            }
+
+            .blink-649-popular.front {
+                top: 37%;
+                right: 8%;
+            }
+
+            .stars {
+                top: 20%;
+                right: 46%;
+            }
+
+            .timer-649-popular {
+                top: 52px;
+                left: 20px;
+            }
+
+            .timer-649-popular-title {
+                font-size: 14px;
+                margin-bottom: 7px;
+            }
+
+            .timer-649-popular-body {
+                grid-template-columns: repeat(3, 38px);
+                gap: 8px;
+            }
+
+            .timer-649-popular-time-wrapper {
+                padding: 7px 11px;
+                font-size: 13px;
+            }
+
+            .timer-649-popular-time-label {
+                font-size: 11px;
+            }
+        }
+
+        @keyframes ripple {
+            from {
+                transform: scale(0.4);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(3.5);
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes blink {
+            0% {
+                transform: scale(0);
+            }
+
+            6% {
+                transform: scale(1.2);
+            }
+
+            12.5% {
+                transform: scale(0.2);
+            }
+
+            25% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="table-cell">
+        <div class="card-649-popular">
+            <h2 class="card-649-popular-title">
+                Выиграйте Кроссовер
+            </h2>
+
+            <div class="timer-649-popular" style="position: absolute;">
+                <div class="timer-649-popular-title">
+                    До завершения регистрации:
+                </div>
+                <div class="timer-649-popular-body" id="timer649pop">
+                    <div class="timer-649-popular-unit">
+                        <div class="timer-649-popular-time-wrapper">
+                            <span class="days649pop">00</span>
+                        </div>
+                        <span class="timer-649-popular-time-label">д.</span>
+                    </div>
+    
+                    <div class="timer-649-popular-unit">
+                        <div class="timer-649-popular-time-wrapper">
+                            <span class="hours649pop">00</span>
+                        </div>
+                        <span class="timer-649-popular-time-label">ч.</span>
+                    </div>
+    
+                    <div class="timer-649-popular-unit">
+                        <div class="timer-649-popular-time-wrapper">
+                            <span class="minutes649pop">00</span>
+                        </div>
+                        <span class="timer-649-popular-time-label">м.</span>
+                    </div>
+                </div>
+            </div>
+            <img src="/649-blink-popular.png" width="150" aria-hidden="true" class="blink-649-popular front">
+            <img src="/649-blink-popular.png" width="100" aria-hidden="true" class="blink-649-popular back">
+            <div class="stars">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+                <img src="/649-popular-star.svg" aria-hidden="true" class="star">
+            </div>
+            <picture>
+                <source media="(min-width: 1024px)" width="449" srcset="/649-car-popular.png">
+                <img src="/649-car-popular.png" width="341" aria-hidden="true" class="car-649-popular">
+            </picture>
+            <picture>
+                <source srcset="/649-logo-popular.png" width="67">
+                <img src="/649-logo-popular.png" width="51" aria-hidden="true" class="logo-649-popular">
+            </picture>
+        </div>
+    </div>
+    <script>
+
+        const blinkers = document.querySelectorAll('.blink-649-popular');
+        const startAnimation = () => {
+            blinkers.forEach((blinker) => {
+                blinker.classList.add('move');
+            })
+        };
+        const stopAnimation = () => {
+            blinkers.forEach((blinker) => {
+                blinker.classList.remove('move');
+            })
+        };
+        const animationToggler = () => {
+            startAnimation();
+            setTimeout(() => {
+                stopAnimation();
+            }, 4000);
+        }
+
+        animationToggler();
+        setInterval(() => { animationToggler() }, 15000)
+
+
+        // дата завершения таймера 
+        setTimeout(() => {
+            const endtime_mobl = 'Feb 28 2024, 00:00 GMT+0600';
+
+            // приводим к стандартному виду 03:04:05, вместо 3:4:5
+            function makeCorrectDate(uncorrectDate) {
+                let correctDate = uncorrectDate;
+                if (uncorrectDate < 10) {
+                    correctDate = '0' + uncorrectDate;
+                }
+                return correctDate;
+            }
+
+            // сколько времени осталось
+            function getDateRemaining(timesup) {
+                // total = оставшееся вермя
+                var total = Date.parse(timesup) - Date.now();
+                var minutes = Math.floor((total / 1000 / 60) % 60);
+                var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+                var days = Math.floor(total / (1000 * 60 * 60 * 24));
+                // вывод объектов
+                return {
+                    'total': total,
+                    'days': days,
+                    'hours': hours,
+                    'minutes': minutes,
+                };
+            }
+
+            // инициализация таймера на самом сайте
+            function setTime(id, timesup) {
+                let timer = document.getElementById(id),
+                    days = document.querySelectorAll('.days649pop'),
+                    hours = document.querySelectorAll('.hours649pop'),
+                    minutes = document.querySelectorAll('.minutes649pop'),
+                    // обновление таймера каждые 1000мс
+                    timeInterval = setInterval(update, 0);
+
+                function update() {
+                    // результат функции getDateRemaining
+                    let total = getDateRemaining(timesup);
+                    // Проверка на ноль
+                    var nowdate = Date.now();
+                    if (nowdate <= Date.parse(endtime_mobl)) {
+                        var nowdate = Date.now();
+                        days.forEach(e => {
+                            e.textContent = makeCorrectDate(total.days);
+                        })
+                        hours.forEach(e => {
+                            e.textContent = makeCorrectDate(total.hours);
+                        })
+                        minutes.forEach(e => {
+                            e.textContent = makeCorrectDate(total.minutes);
+                        })
+
+                    }
+
+                    else {
+                        days.textContent = 0;
+                        hours.textContent = 0;
+                        minutes.textContent = 0;
+                    }
+
+                }
+            }
+            setTime('timer649pop', endtime_mobl);
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
